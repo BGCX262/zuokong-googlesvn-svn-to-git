@@ -1,0 +1,11 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\zuokong-googlesvn\trunk\stm32\stm32_project\vct6_os\vct6_os.uvproj
+Project File Date:  10/22/2012
+
+<h2>Output:</h2>
+Clean started: Project: 'vct6_os'
+   deleting intermediate output files for target 'vct6_os'

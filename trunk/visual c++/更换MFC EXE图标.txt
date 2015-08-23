@@ -1,0 +1,38 @@
+MFC C++写的，使用的都是Windows底层API，可视化部分用了OpenGL 和 FreeType
+
+
+
+
+
+创建一个新工程，可以什么都不加。打开.rc，  创建或打开Icon资源（以下都以Icon为例）。    
+   
+ 单击工程窗口的资源视图标签，选中资源ID为IDR_MAINFRAME图标资源，然后按Delete键把它删除掉，当然也可以不删，具体后面会讲到。    
+   
+ 从资源菜单中选择Resource，然后选择Icon，添加资源，选中Icon类型，点击导入，此时会叫你选择本地的图片，记住必须选择.ioc格式的图片，否则导入失败。    
+   
+ 把新图标的资源ID改为IDI_ICON（也可以不改）。 具体做法如下： 
+ 有一点很重要，你改知道就是 打开Header Files下的Resource.h，找到Icon下的图标，系统默认是从128开始的，
+#define IDR_MAINFRAME               128
+#define IDR_ICONTETYPE             129(单/多文档程序的文档图标)
+#define IDI_ICON1                            130
+#define IDI_ICON2                            131
+
+
+
+1.方法
+VS2010生成的exe文件图标是用Icon下几个图标中value值最小的，顺序为IDR_MAINFRAME、IDR_ICONTETYPE、新加 的，所以想更改生成的exe文件图标，只要保证图标的value值是Icon下几个图标中最小的就可以了
+ 1，导入自己的.ioc图片，并在Resource.h中，将自己加的icon资源Value改为最小，如下，因此不一定要删除IDR_MAINFRAME
+      #define IDR_MAINFRAME                   129
+      #define IDI_ICON1                               128（自己添加的icon） 
+ 2，然后编译运行，找到你的debug目录，你将看到图标已经更改的.exe执行文件，这种方法可以将任何你喜欢的图片做成.exe文件图标
+
+2.修改标题栏图标
+ 1，如上操作，导入自己喜爱的ico图片，编辑新加icon的ID，比如我新加的Icon资源ID为 IDI_ICON1
+ 2，基于对话框的程序，在构造函数中有一句
+  m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+  此时把IDR_MAINFRAME改为我的IDI_ICON1的图标名。
+ 3,编译运行你看到自己喜爱的图片出现在标题栏的位置了。
+ 
+3.  .ico格式图片制作
+   http://ico.55.la/
+  上面的网址可以将jpg .jpeg .gif .png  转换为.ioc 之后的操作你该会的！

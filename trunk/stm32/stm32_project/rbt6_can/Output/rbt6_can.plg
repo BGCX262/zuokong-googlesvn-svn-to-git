@@ -1,0 +1,11 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\zuokong\stm32\strm32_project\rbt6_can\rbt6_can.uvproj
+Project File Date:  03/21/2013
+
+<h2>Output:</h2>
+Clean started: Project: 'rbt6_can'
+   deleting intermediate output files for target 'rbt6_can'
